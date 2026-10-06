@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: webmcp-browser-benchmark
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: false

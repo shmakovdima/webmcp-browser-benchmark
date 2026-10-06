@@ -1,0 +1,61 @@
+[
+  {
+    "id": "T1",
+    "prompt": "Find the cheapest in-stock noise-cancelling headphones under $200. Return the product name and price. Do not add anything to the cart.",
+    "expected": {
+      "productId": "hp-sonic-lite",
+      "productName": "Sonic Lite ANC",
+      "priceCents": 12900,
+      "cartItemCount": 0,
+      "orderCount": 0
+    }
+  },
+  {
+    "id": "T2",
+    "prompt": "Add two black Sonic Lite ANC headphones to the cart. Return the cart subtotal and total quantity. Do not place an order.",
+    "expected": {
+      "productId": "hp-sonic-lite",
+      "color": "black",
+      "quantity": 2,
+      "subtotalCents": 25800,
+      "cartItemCount": 1,
+      "orderCount": 0
+    }
+  },
+  {
+    "id": "T3",
+    "prompt": "Buy one black Sonic Lite ANC headphone. Ship it to Alex Morgan, alex@example.com, 10 Market Street, Boston, 02110, United States. Place the test order and return the order ID and total.",
+    "expected": {
+      "productId": "hp-sonic-lite",
+      "color": "black",
+      "quantity": 1,
+      "orderId": "order-0001",
+      "totalCents": 13400,
+      "cartItemCount": 0,
+      "orderCount": 1
+    }
+  },
+  {
+    "id": "T4",
+    "prompt": "Compare the two cheapest in-stock noise-cancelling headphones under $200. Return the cheaper product name and the price difference. Do not add anything to the cart.",
+    "expected": {
+      "productId": "hp-sonic-lite",
+      "priceDifferenceCents": 2000,
+      "cartItemCount": 0,
+      "orderCount": 0
+    }
+  },
+  {
+    "id": "T5",
+    "prompt": "Add one black Sonic Lite ANC headphone and one black Slate 75 keyboard to the cart. Change the headphone quantity to two, remove the keyboard, place the test order for Alex Morgan at alex@example.com, 10 Market Street, Boston, 02110, United States, and return the final line count and total.",
+    "expected": {
+      "productIds": ["hp-sonic-lite"],
+      "color": "black",
+      "quantity": 2,
+      "orderId": "order-0001",
+      "totalCents": 26300,
+      "lineCount": 1,
+      "orderCount": 1
+    }
+  }
+]

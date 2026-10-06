@@ -1,0 +1,15 @@
+{
+  "host": "127.0.0.1",
+  "port": 4173,
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "limits": {
+    "maxTurns": 30,
+    "timeoutMs": 300000
+  },
+  "shippingCents": 500,
+  "currency": "USD",
+  "webmcpApi": "document.modelContext"
+}

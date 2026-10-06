@@ -1,0 +1,33 @@
+{
+  "name": "webmcp-browser-benchmark",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "bun test tests/store.test.js tests/reset.test.js tests/tools.test.js tests/oracle.test.js tests/runner.test.js",
+    "test:browser": "bun run build && bun test --timeout 30000 tests/browser.test.js",
+    "test:playwright-mcp": "bun test --timeout 30000 tests/playwright-mcp.test.js",
+    "test:pages": "bun test tests/pages.test.js",
+    "test:pages:browser": "bun run build:pages && bun test --timeout 30000 tests/pages-browser.test.js",
+    "build": "vite build",
+    "build:pages": "bun scripts/build-pages.js",
+    "start": "bun run build && bun src/server/server.js",
+    "lint:check": "bun --check src/server/store.js",
+    "smoke:dry": "bun src/runner/run.js development --dry-run --mode webmcp --task T1",
+    "smoke:playwright-mcp": "bun scripts/playwright-mcp-smoke.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.2"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.25.2",
+    "@playwright/mcp": "0.0.83",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  }
+}
