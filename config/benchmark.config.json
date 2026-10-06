@@ -10,47 +10,57 @@
     "timeoutMs": 300000
   },
   "modelPlan": {
-    "primary": [
+    "pairs": [
       {
-        "provider": "openai",
-        "id": "gpt-6.1-sol",
-        "label": "GPT-6.1 Sol",
-        "role": "primary"
+        "order": 1,
+        "status": "required",
+        "models": [
+          {
+            "provider": "openai",
+            "id": "gpt-6.1-sol",
+            "label": "GPT-6.1 Sol"
+          },
+          {
+            "provider": "anthropic",
+            "id": "claude-sonnet-5-5",
+            "label": "Claude Sonnet 5.5"
+          }
+        ]
       },
       {
-        "provider": "anthropic",
-        "id": "claude-sonnet-5-5",
-        "label": "Claude Sonnet 5.5",
-        "role": "primary"
+        "order": 2,
+        "status": "only if budget remains after pair 1",
+        "models": [
+          {
+            "provider": "openai",
+            "id": "gpt-5.6-terra",
+            "label": "GPT-5.6 Terra"
+          },
+          {
+            "provider": "anthropic",
+            "id": "claude-opus-5-5",
+            "label": "Claude Opus 5.5"
+          }
+        ]
+      },
+      {
+        "order": 3,
+        "status": "only if budget remains after pair 2",
+        "models": [
+          {
+            "provider": "openai",
+            "id": "gpt-5.6-luna",
+            "label": "GPT-5.6 Luna"
+          },
+          {
+            "provider": "anthropic",
+            "id": "claude-haiku-4-5-20251001",
+            "label": "Claude Haiku 4.5"
+          }
+        ]
       }
     ],
-    "reserveIfBudgetRemains": [
-      {
-        "provider": "openai",
-        "id": "gpt-5.6-terra",
-        "label": "GPT-5.6 Terra",
-        "role": "reserve"
-      },
-      {
-        "provider": "openai",
-        "id": "gpt-5.6-luna",
-        "label": "GPT-5.6 Luna",
-        "role": "reserve"
-      },
-      {
-        "provider": "anthropic",
-        "id": "claude-opus-5-5",
-        "label": "Claude Opus 5.5",
-        "role": "reserve"
-      },
-      {
-        "provider": "anthropic",
-        "id": "claude-haiku-4-5-20251001",
-        "label": "Claude Haiku 4.5",
-        "role": "reserve"
-      }
-    ],
-    "rule": "Run every frozen task through every comparison mode for primary models before any reserve model."
+    "rule": "Complete every frozen task in every comparison mode for both models in one pair before starting the next pair."
   },
   "shippingCents": 500,
   "currency": "USD",

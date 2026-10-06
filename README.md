@@ -90,19 +90,13 @@ The expected state is validated against the backend, not only against the model'
 
 ## Planned test models
 
-Run these first:
+The model order is mandatory. Do not start a later pair until both models in the current pair have completed every frozen task in every comparison mode.
 
-- OpenAI: `gpt-6.1-sol` - GPT-6.1 Sol.
-- Anthropic: `claude-sonnet-5-5` - Claude Sonnet 5.5.
+1. Pair 1: `gpt-6.1-sol` - GPT-6.1 Sol, then `claude-sonnet-5-5` - Claude Sonnet 5.5.
+2. Pair 2, only if budget remains after Pair 1: `gpt-5.6-terra` - GPT-5.6 Terra, then `claude-opus-5-5` - Claude Opus 5.5.
+3. Pair 3, only if budget remains after Pair 2: `gpt-5.6-luna` - GPT-5.6 Luna, then `claude-haiku-4-5-20251001` - Claude Haiku 4.5.
 
-Only if budget remains after both primary runs, add:
-
-- OpenAI: `gpt-5.6-terra` - GPT-5.6 Terra.
-- OpenAI: `gpt-5.6-luna` - GPT-5.6 Luna.
-- Anthropic: `claude-opus-5-5` - Claude Opus 5.5.
-- Anthropic: `claude-haiku-4-5-20251001` - Claude Haiku 4.5.
-
-Each model runs every frozen task in all three comparison modes. No other models are in the initial plan. The pinned list lives in [config/benchmark.config.json](config/benchmark.config.json).
+No other models are in the initial plan. The pinned execution order lives in [config/benchmark.config.json](config/benchmark.config.json).
 
 ## Dry-run pipeline
 
