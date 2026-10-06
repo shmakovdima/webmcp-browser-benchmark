@@ -127,6 +127,8 @@ bun run build:pages
 
 The generated `site/` folder is repository-subpath safe and is deployed by [.github/workflows/pages.yml](.github/workflows/pages.yml). See [deploy/README.md](deploy/README.md). The public demo exposes the synthetic store and WebMCP tools only. It does not expose the benchmark runner, model keys, or private state.
 
+Live demo: [Northstar Store - WebMCP Browser Benchmark](https://shmakovdima.github.io/webmcp-browser-benchmark/)
+
 ## Publish this folder to GitHub Pages
 
 Run these commands from this folder:
