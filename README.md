@@ -88,6 +88,15 @@ The frozen fixture contains five tasks:
 
 The expected state is validated against the backend, not only against the model's final text.
 
+## Planned test models
+
+The benchmark will use one current primary model from each provider:
+
+- OpenAI: `gpt-6.1-sol` - GPT-6.1 Sol.
+- Anthropic: `claude-sonnet-5-5` - Claude Sonnet 5.5.
+
+Each model will run every frozen task in all three comparison modes. `gpt-6-astra` and `claude-opus-5-5` are deliberately excluded from the initial run to stay within the test budget. The pinned list lives in [config/benchmark.config.json](config/benchmark.config.json).
+
 ## Dry-run pipeline
 
 Dry-run checks the mode and task contracts without a model call or provider key:

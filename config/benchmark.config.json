@@ -9,6 +9,27 @@
     "maxTurns": 30,
     "timeoutMs": 300000
   },
+  "modelPlan": {
+    "models": [
+      {
+        "provider": "openai",
+        "id": "gpt-6.1-sol",
+        "label": "GPT-6.1 Sol",
+        "role": "primary"
+      },
+      {
+        "provider": "anthropic",
+        "id": "claude-sonnet-5-5",
+        "label": "Claude Sonnet 5.5",
+        "role": "primary"
+      }
+    ],
+    "excludedForBudget": [
+      "gpt-6-astra",
+      "claude-opus-5-5"
+    ],
+    "rule": "Run every frozen task through every comparison mode for each primary model."
+  },
   "shippingCents": 500,
   "currency": "USD",
   "webmcpApi": "document.modelContext"
