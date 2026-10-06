@@ -27,15 +27,27 @@
     "reserveIfBudgetRemains": [
       {
         "provider": "openai",
-        "id": "gpt-6-astra",
-        "label": "GPT-6 Astra",
-        "role": "frontier reserve"
+        "id": "gpt-5.6-terra",
+        "label": "GPT-5.6 Terra",
+        "role": "reserve"
+      },
+      {
+        "provider": "openai",
+        "id": "gpt-5.6-luna",
+        "label": "GPT-5.6 Luna",
+        "role": "reserve"
       },
       {
         "provider": "anthropic",
         "id": "claude-opus-5-5",
         "label": "Claude Opus 5.5",
-        "role": "frontier reserve"
+        "role": "reserve"
+      },
+      {
+        "provider": "anthropic",
+        "id": "claude-haiku-4-5-20251001",
+        "label": "Claude Haiku 4.5",
+        "role": "reserve"
       }
     ],
     "rule": "Run every frozen task through every comparison mode for primary models before any reserve model."

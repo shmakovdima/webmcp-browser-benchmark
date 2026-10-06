@@ -97,8 +97,10 @@ Run these first:
 
 Only if budget remains after both primary runs, add:
 
-- OpenAI: `gpt-6-astra` - GPT-6 Astra.
+- OpenAI: `gpt-5.6-terra` - GPT-5.6 Terra.
+- OpenAI: `gpt-5.6-luna` - GPT-5.6 Luna.
 - Anthropic: `claude-opus-5-5` - Claude Opus 5.5.
+- Anthropic: `claude-haiku-4-5-20251001` - Claude Haiku 4.5.
 
 Each model runs every frozen task in all three comparison modes. No other models are in the initial plan. The pinned list lives in [config/benchmark.config.json](config/benchmark.config.json).
 
