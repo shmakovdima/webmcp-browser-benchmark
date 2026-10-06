@@ -12,10 +12,3 @@ test-results/
 site/
 *.log
 dist/
-site/
-node_modules/
-node_modules/
-dist/
-site/
-.playwright-mcp/
-*.log

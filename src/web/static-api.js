@@ -20,12 +20,11 @@ export function createStaticRequest() {
     const url = new URL(path, window.location.href);
 
     if (url.pathname === '/api/products') {
-      const tags = url.searchParams.get('tags');
       return { products: store.searchProducts({
         query: url.searchParams.get('query') ?? '',
         category: url.searchParams.get('category') ?? '',
         maxPriceCents: url.searchParams.has('maxPriceCents') ? Number(url.searchParams.get('maxPriceCents')) : undefined,
-        tags: tags ? tags.split(',').filter(Boolean) : [],
+        tags: url.searchParams.get('tags')?.split(',').filter(Boolean) ?? [],
         inStockOnly: url.searchParams.get('inStockOnly') === 'true',
         sort: url.searchParams.get('sort') ?? undefined,
       }) };

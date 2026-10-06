@@ -1,3 +1,5 @@
+import { buildProductQuery } from './product-query.js';
+
 const toolDefinitions = [
   {
     name: 'search_products',
@@ -77,19 +79,10 @@ export function getWebMcpToolDefinitions() {
   return clone(toolDefinitions);
 }
 
-function queryString(input) {
-  const params = new URLSearchParams();
-  for (const key of ['query', 'category', 'maxPriceCents', 'inStockOnly', 'sort']) {
-    if (input[key] !== undefined && input[key] !== '') params.set(key, String(input[key]));
-  }
-  if (Array.isArray(input.tags) && input.tags.length > 0) params.set('tags', input.tags.join(','));
-  return params.toString();
-}
-
 export function createWebMcpTools({ request }) {
   const definitions = getWebMcpToolDefinitions();
   const handlers = {
-    search_products: (input = {}) => request(`/api/products?${queryString(input)}`),
+    search_products: (input = {}) => request(`/api/products?${buildProductQuery(input)}`),
     get_product: (input) => request(`/api/products/${encodeURIComponent(input.productId)}`),
     set_cart_item: (input) => request(`/api/cart/items/${encodeURIComponent(input.productId)}`, {
       method: 'PUT',
