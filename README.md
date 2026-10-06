@@ -90,12 +90,17 @@ The expected state is validated against the backend, not only against the model'
 
 ## Planned test models
 
-The benchmark will use one current primary model from each provider:
+Run these first:
 
 - OpenAI: `gpt-6.1-sol` - GPT-6.1 Sol.
 - Anthropic: `claude-sonnet-5-5` - Claude Sonnet 5.5.
 
-Each model will run every frozen task in all three comparison modes. `gpt-6-astra` and `claude-opus-5-5` are deliberately excluded from the initial run to stay within the test budget. The pinned list lives in [config/benchmark.config.json](config/benchmark.config.json).
+Only if budget remains after both primary runs, add:
+
+- OpenAI: `gpt-6-astra` - GPT-6 Astra.
+- Anthropic: `claude-opus-5-5` - Claude Opus 5.5.
+
+Each model runs every frozen task in all three comparison modes. No other models are in the initial plan. The pinned list lives in [config/benchmark.config.json](config/benchmark.config.json).
 
 ## Dry-run pipeline
 

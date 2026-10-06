@@ -10,7 +10,7 @@
     "timeoutMs": 300000
   },
   "modelPlan": {
-    "models": [
+    "primary": [
       {
         "provider": "openai",
         "id": "gpt-6.1-sol",
@@ -24,11 +24,21 @@
         "role": "primary"
       }
     ],
-    "excludedForBudget": [
-      "gpt-6-astra",
-      "claude-opus-5-5"
+    "reserveIfBudgetRemains": [
+      {
+        "provider": "openai",
+        "id": "gpt-6-astra",
+        "label": "GPT-6 Astra",
+        "role": "frontier reserve"
+      },
+      {
+        "provider": "anthropic",
+        "id": "claude-opus-5-5",
+        "label": "Claude Opus 5.5",
+        "role": "frontier reserve"
+      }
     ],
-    "rule": "Run every frozen task through every comparison mode for each primary model."
+    "rule": "Run every frozen task through every comparison mode for primary models before any reserve model."
   },
   "shippingCents": 500,
   "currency": "USD",
