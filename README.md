@@ -25,6 +25,34 @@ Open `http://127.0.0.1:4173/`.
 
 The store is synthetic. Checkout creates a test order and never contacts a payment provider.
 
+## Staging status and local run
+
+The staging demo is ready. It includes the synthetic catalog, category and feature filters, product details, cart, checkout, and the WebMCP tool surface backed by the same store as the human UI. It does not use model-provider keys or make real payments.
+
+Run the staging server locally:
+
+```bash
+cd /Users/shmakovdima/doka/webmcp-browser-benchmark
+bun install
+bun run start
+```
+
+Open `http://127.0.0.1:4173/` in Chrome. The server should print `Northstar Store listening at http://127.0.0.1:4173`.
+
+Check that the server is alive from a second terminal:
+
+```bash
+curl http://127.0.0.1:4173/health
+```
+
+Expected response:
+
+```json
+{"ok":true}
+```
+
+The staging server is local and uses an in-memory synthetic store. Restarting it resets the state. For the static public version, use the [GitHub Pages instructions](#publish-this-folder-to-github-pages) below.
+
 ## Browser tests
 
 Browser tests run through Playwright but compare agent interfaces, not direct Playwright API calls. Playwright is the browser driver used to open the same page and run deterministic UI checks.
@@ -150,6 +178,7 @@ The WebMCP API is still evolving. This benchmark intentionally freezes the imple
 
 Implemented locally:
 
+- staging demo ready for local run and GitHub Pages deployment;
 - deterministic store and reset state;
 - accessible UI and checkout flow;
 - five WebMCP tool definitions backed by the same API as the UI;
