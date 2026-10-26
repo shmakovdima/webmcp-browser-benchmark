@@ -55,7 +55,7 @@ The store is synthetic. Checkout creates a test order and never contacts a payme
 
 ## Staging status and local run
 
-The staging demo is ready. It includes the synthetic catalog, category and feature filters, product details, cart, checkout, and the WebMCP tool surface backed by the same store as the human UI. It does not use model-provider keys or make real payments.
+The `v0.1.0-rc.1` pre-release demo includes the synthetic catalog, category and feature filters, product details, cart, checkout, and the WebMCP tool surface backed by the same store as the human UI. It does not use model-provider keys or make real payments.
 
 Run the staging server locally:
 

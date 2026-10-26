@@ -327,7 +327,7 @@ export function App() {
   const [filters, setFilters] = useState(defaultFilters);
   const [view, setView] = useState('catalog');
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const [status, setStatus] = useState('Synthetic store for a browser-agent benchmark. No payment is processed.');
+  const [status, setStatus] = useState('Pre-release synthetic store for comparing browser-agent interfaces. No payment is processed.');
   const [confirmation, setConfirmation] = useState('');
 
   const loadProducts = useCallback(async (next = defaultFilters) => {
@@ -422,9 +422,9 @@ export function App() {
         <p className="notice" role="status" data-testid="status">{status}</p>
         <section className="hero">
           <div>
-            <p className="eyebrow">WebMCP Browser Benchmark</p>
+            <p className="eyebrow">WebMCP Browser Benchmark - pre-release</p>
             <h1>Shop the signal,<br /><em>skip the noise.</em></h1>
-            <p className="hero-copy">A deterministic store built to compare browser automation with an in-page, typed agent interface.</p>
+            <p className="hero-copy">A pre-release synthetic store for comparing DOM automation, Playwright MCP, and typed in-page WebMCP tools against the same deterministic state.</p>
             <div className="hero-actions">
               <a className="button-link" href="#catalog">Browse catalog</a>
               <a className="text-link" href="#checkout">Try synthetic checkout <span>→</span></a>
@@ -459,7 +459,7 @@ export function App() {
       </main>
       <footer className="site-footer">
         <span>Northstar Store</span>
-        <span>Built for reproducible agent benchmarks</span>
+        <span>Pre-release v0.1.0-rc.1 - built for reproducible agent benchmarks</span>
       </footer>
     </>
   );
