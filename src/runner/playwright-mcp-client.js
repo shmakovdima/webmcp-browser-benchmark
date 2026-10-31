@@ -86,6 +86,9 @@ export function createPlaywrightMcpClient({
 
     async callTool(name, args = {}) {
       if (!client) notStarted();
+      if (name === 'browser_navigate' && args.url && new URL(args.url, targetUrl).origin !== new URL(targetUrl).origin) {
+        throw new Error(`Playwright MCP navigation is outside the benchmark origin: ${args.url}`);
+      }
       return client.callTool({ name, arguments: args });
     },
   };

@@ -8,10 +8,14 @@ const stage = process.env.BENCHMARK_STAGE ?? 'smoke';
 const outputDir = process.env.BENCHMARK_OUTPUT_DIR ?? 'results';
 
 if (!mode || !taskId || !providerName || !model) {
-  throw new Error('usage: BENCHMARK_PROVIDER=openai|anthropic MODEL_ID=model bun scripts/run-experiment.js mode task-id');
+  throw new Error('usage: BENCHMARK_PROVIDER=openai|anthropic|nebius-token-factory MODEL_ID=model bun scripts/run-experiment.js mode task-id');
 }
 
-const apiKey = providerName === 'openai' ? process.env.OPENAI_API_KEY : process.env.ANTHROPIC_API_KEY;
+const apiKey = providerName === 'openai'
+  ? process.env.OPENAI_API_KEY
+  : providerName === 'anthropic'
+    ? process.env.ANTHROPIC_API_KEY
+    : process.env.NEBIUS_TOKEN_FACTORY_KEY;
 const provider = createProvider({ provider: providerName, model, apiKey });
 const result = await executeExperimentAttempt({ mode, taskId, stage, provider, outputDir });
 

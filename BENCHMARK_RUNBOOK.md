@@ -45,9 +45,9 @@ Public demo: https://shmakovdima.github.io/webmcp-browser-benchmark/
 
 The public demo is a safe static store demonstration. It contains no provider credentials, benchmark runner, private results, or live payment flow.
 
-## What is not implemented yet
+## Provider-backed experiment entrypoint
 
-No provider adapter currently calls OpenAI or Anthropic. `src/runner/run.js` deliberately stops at `status: "ready"` when not dry-running. That is a guardrail, not a result.
+The provider-neutral runner is covered by unit tests, and `scripts/run-experiment.js` adds the live provider-backed path. The repository includes adapters for OpenAI, Anthropic, and the Nebius Token Factory OpenAI-compatible endpoint. Provider keys are read from environment variables only and are redacted from manifests and summaries.
 
 The repository can therefore verify:
 
@@ -57,7 +57,7 @@ The repository can therefore verify:
 - capability isolation contracts;
 - UI, store, checkout, reset, Pages packaging, and backend oracle.
 
-It cannot yet produce publishable token, latency, or success-rate numbers. No number may be called a benchmark result until the provider adapter and end-to-end runner are implemented and used.
+Only completed attempts with both the backend-state oracle and final-answer oracle passing can produce publishable comparison numbers. Failed browser connections and incomplete attempts remain diagnostics and are not placed in comparison rows.
 
 ## Secrets and permission boundary
 

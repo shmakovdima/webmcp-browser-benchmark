@@ -38,6 +38,23 @@ Only the local synthetic store is targeted. Every Codex thread uses an isolated 
 
 The sections below describe the older development harness; `bun run benchmark T1` is the current subscription measurement entry point.
 
+## Run the provider-backed Nemotron experiment
+
+The same five-task matrix can be run against NVIDIA Nemotron 3 Ultra 550b through the Nebius Token Factory OpenAI-compatible endpoint. The key is read only from the environment and is never written to a result file:
+
+```bash
+export NEBIUS_TOKEN_FACTORY_KEY='your-token-factory-key'
+export BENCHMARK_PROVIDER=nebius-token-factory
+export MODEL_ID=nvidia/Nemotron-3-Ultra-550b-a55b
+export BENCHMARK_OUTPUT_DIR=results/nemotron-run
+
+bun scripts/run-experiment.js webmcp T1
+bun scripts/run-experiment.js playwright-mcp T1
+bun scripts/run-experiment.js visual T1
+```
+
+Use a fresh output directory for a complete T1-T5 matrix. The public Nemotron matrix is preserved at [results/2026-10-30-nebius-nemotron-3-ultra-550b-a55b/matrix.md](results/2026-10-30-nebius-nemotron-3-ultra-550b-a55b/matrix.md). It contains provider-reported usage and both oracle verdicts; local UUID attempt folders and failed diagnostics remain ignored.
+
 ## Local setup
 
 Requires Bun 1.3 or newer. The repository intentionally uses Bun for installation, scripts, tests, and the local server.
@@ -140,7 +157,7 @@ Measured execution requires an explicit model identifier:
 MODEL_ID=your-frozen-model bun src/runner/run.js --stage smoke --mode webmcp --task T1
 ```
 
-The current runner stops at the provider-neutral contract boundary until a model provider adapter is configured for the experiment. The official Playwright MCP process wiring is present and covered by a separate local smoke test. Do not treat a `ready` response as a benchmark result.
+The low-level runner remains provider-neutral, while `scripts/run-experiment.js` provides the provider-backed experiment entrypoint for OpenAI-compatible and Anthropic-style adapters. A provider-backed invocation is a benchmark result only when the attempt finishes and both oracles pass. The official Playwright MCP process wiring is covered by a separate local smoke test.
 
 The full stage additionally requires a deliberate approval flag:
 

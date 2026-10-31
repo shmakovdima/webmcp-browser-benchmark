@@ -7,6 +7,8 @@ results/*.json
 results/screenshots/
 results/traces/
 results/logs/
+results/2026-10-30-nebius-nemotron-3-ultra-550b-a55b/*/
+results/2026-10-30-nvidia-nemotron-3-super-120b-a12b/
 playwright-report/
 test-results/
 site/

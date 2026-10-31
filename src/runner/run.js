@@ -27,7 +27,7 @@ function validateInputs({ mode, taskId, stage }) {
   return getMode(mode);
 }
 
-function getTask(taskId) {
+export function getTask(taskId) {
   const task = tasks.find((candidate) => candidate.id === taskId);
   if (!task) throw new Error(`unknown benchmark task: ${taskId}`);
   return task;
@@ -38,6 +38,7 @@ export async function runBenchmark({
   taskId,
   stage = 'development',
   dryRun = false,
+  prompt: benchmarkPrompt,
   modelId,
   provider,
   runtime,
@@ -60,13 +61,14 @@ export async function runBenchmark({
 
   if (provider && runtime) {
     const task = getTask(taskId);
+    const prompt = benchmarkPrompt ?? task.prompt;
     const loop = createAgentLoop({
       provider,
       tools: runtime.tools,
       toolDefinitions: runtime.toolDefinitions,
       maxTurns: runtime.maxTurns,
     });
-    const run = await loop.run({ prompt: task.prompt });
+    const run = await loop.run({ prompt });
     const verdict = validateTask(taskId, {
       snapshot: await runtime.getSnapshot(),
       finalAnswer: run.finalText,

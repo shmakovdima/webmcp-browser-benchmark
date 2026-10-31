@@ -4,10 +4,10 @@ const object = (properties = {}, required = []) => ({ type: 'object', properties
 const string = { type: 'string' };
 export const domToolDefinitions = [
   { name: 'open_page', description: 'Open the benchmark URL in a new isolated Chrome tab and read its rendered DOM.', inputSchema: object() },
-  { name: 'dom', description: 'Read the rendered DOM, including text and interactive elements. Optionally scope the read to a CSS selector. Scripts, styles, hidden elements and SVG internals are omitted.', inputSchema: object({ selector: string }) },
-  { name: 'click', description: 'Click one visible element identified by a CSS selector.', inputSchema: object({ selector: string }, ['selector']) },
+  { name: 'dom', description: 'Read the rendered DOM, including text and interactive elements. Optionally scope the read to a standard CSS selector. Scripts, styles, hidden elements and SVG internals are omitted. Playwright selectors such as :contains and :has-text are not CSS.', inputSchema: object({ selector: string }) },
+  { name: 'click', description: 'Click one visible element identified by a standard CSS selector that matches exactly one element. Do not click hidden option elements; use select for dropdowns.', inputSchema: object({ selector: string }, ['selector']) },
   { name: 'type', description: 'Fill an input identified by a CSS selector.', inputSchema: object({ selector: string, text: string }, ['selector', 'text']) },
-  { name: 'select', description: 'Select an option in a dropdown by its value.', inputSchema: object({ selector: string, value: string }, ['selector', 'value']) },
+  { name: 'select', description: 'Select an option in a visible dropdown by its standard CSS selector and option value. Use this instead of clicking an option.', inputSchema: object({ selector: string, value: string }, ['selector', 'value']) },
   { name: 'press', description: 'Press a key on an element identified by a CSS selector.', inputSchema: object({ selector: string, key: string }, ['selector', 'key']) },
   { name: 'scroll', description: 'Scroll the page by pixel deltas.', inputSchema: object({ deltaY: { type: 'number' }, deltaX: { type: 'number' } }, ['deltaY']) },
 ];
@@ -46,18 +46,36 @@ export async function createDomRuntime({ targetUrl } = {}) {
   };
   const action = (perform) => async (input) => {
     if (!opened) throw new Error('Call open_page first');
-    await perform(input);
-    return { ok: true };
+    try {
+      await perform(input);
+      return { ok: true };
+    } catch (error) {
+      return {
+        isError: true,
+        error: `${error.message} Use a standard CSS selector; use select for dropdown options.`,
+      };
+    }
   };
   return {
     toolDefinitions: domToolDefinitions,
+    maxTurns: 60,
     tools: {
       open_page: async () => {
-        await page.goto(targetUrl, { waitUntil: 'networkidle' });
-        opened = true;
-        return readDom();
+        try {
+          await page.goto(targetUrl, { waitUntil: 'networkidle' });
+          opened = true;
+          return readDom();
+        } catch (error) {
+          return { isError: true, error: error.message };
+        }
       },
-      dom: readDom,
+      dom: async (input) => {
+        try {
+          return await readDom(input);
+        } catch (error) {
+          return { isError: true, error: `${error.message} Use a standard CSS selector.` };
+        }
+      },
       click: action(({ selector }) => page.locator(selector).click()),
       type: action(({ selector, text }) => page.locator(selector).fill(text)),
       select: action(({ selector, value }) => page.locator(selector).selectOption(value)),
