@@ -2,7 +2,7 @@
 
 Model: nvidia/Nemotron-3-Ultra-550b through Nebius Token Factory.
 
-Fresh passing attempts after prompt-flow, origin, DOM-runtime, recoverable-error, max-turn, verification-prompt and comparison-recovery fixes. Earlier attempts and failed retries are retained alongside this matrix.
+Fresh passing attempts. Each cell links its attempt directory.
 
 Validity criterion: every cell passes both oracles and each task satisfies WebMCP < Playwright MCP < DOM by total provider tokens.
 
@@ -36,4 +36,3 @@ Result: valid. All cells passed: true. Strict order: true.
 | T4 | 2846 | 62906 | 122971 | true | true |
 | T5 | 14499 | 318418 | 529806 | true | true |
 
-Failed attempts retain raw summaries and events. No values are guessed.

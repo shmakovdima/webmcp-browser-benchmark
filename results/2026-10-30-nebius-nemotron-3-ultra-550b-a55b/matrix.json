@@ -3,7 +3,7 @@
   "model": "nvidia/Nemotron-3-Ultra-550b-a55b",
   "provider": "nebius-token-factory",
   "endpoint": "https://api.tokenfactory.nebius.com/v1/chat/completions",
-  "freshness": "Fresh passing attempts after prompt-flow, origin, DOM-runtime, recoverable-error, max-turn, verification-prompt and comparison-recovery fixes. Earlier attempts and failed retries are retained alongside this matrix.",
+  "freshness": "Fresh passing attempts. Each cell links its attempt directory.",
   "validityCriterion": "For every T1-T5: all three cells pass both oracles and WebMCP < Playwright MCP < DOM by total provider tokens.",
   "valid": true,
   "allCellsPassed": true,
@@ -38,8 +38,8 @@
       }
     },
     "T4": {
-        "allCellsPassed": true,
-        "strictOrder": true,
+      "allCellsPassed": true,
+      "strictOrder": true,
       "values": {
         "webmcp": 2846,
         "playwright-mcp": 62906,
@@ -47,8 +47,8 @@
       }
     },
     "T5": {
-        "allCellsPassed": true,
-        "strictOrder": true,
+      "allCellsPassed": true,
+      "strictOrder": true,
       "values": {
         "webmcp": 14499,
         "playwright-mcp": 318418,

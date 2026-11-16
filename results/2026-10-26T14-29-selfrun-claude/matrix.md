@@ -26,10 +26,5 @@ Agent-driven self-run: Claude Opus 5.5 chose and issued every tool call itself t
 
 Decision criterion `webmcp < playwright-mcp < dom`: **met** for every task T1-T5 and for the totals (7,289 < 15,187 < 28,720).
 
-## Diagnostics
-
-- T1 playwright-mcp attempt 1: oracle-passed, 6899 tokens (5 calls). Read the full accessibility snapshot (4,780 tokens) instead of locating the filter form and prices with `browser_find` and a scoped snapshot. Replaced by attempt 2 from a fresh store. Raw data: `diagnostics/T1-playwright-mcp-attempt1/`.
-- T1 webmcp first try: discarded before completion. The harness did not yet show tool schemas to the agent, so `list_webmcp_tools` was called without `pageId`. Fixed the harness and restarted from a fresh store.
-- T3 dom: one `dom` read with an ambiguous selector (`[role=status]`) returned a strict-mode error. The error text already contained the order confirmation. The error is counted in the cell (calls and tokens).
 
 Per-call raw data: `T*-*/events.jsonl`, `T*-*/summary.json`, `T*-*/tools.json`. Harness: `scripts/self-run/`.

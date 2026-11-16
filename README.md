@@ -10,6 +10,19 @@ The benchmark asks the same model to complete the same shopping tasks against th
 
 The benchmark is allowed to show that WebMCP loses. No result is considered valid until it comes from a frozen measured run.
 
+## Results
+
+Every published matrix covers T1-T5 in all three interfaces, every cell passes both oracles, and every task satisfies `webmcp < playwright-mcp < dom` by total tokens.
+
+| Agent | Token source | WebMCP | Playwright MCP | DOM | Matrix |
+| --- | --- | ---: | ---: | ---: | --- |
+| Nemotron 3 Ultra (Nebius Token Factory) | provider-reported | 31,359 | 515,154 | 1,005,545 | [matrix](results/2026-10-30-nebius-nemotron-3-ultra-550b-a55b/matrix.md) |
+| GPT-5.6 Terra (Codex CLI) | provider-reported | 365,517 | 1,033,416 | 1,183,765 | [matrix](results/2026-10-gpt-5-6-terra/matrix.md) |
+| Claude Opus 5.5 self-run | `o200k_base` | 7,289 | 15,187 | 28,720 | [matrix](results/2026-10-26T14-29-selfrun-claude/matrix.md) |
+| Meta Muse Spark 1.3 | `o200k_base` | 4,623 | 27,272 | 48,330 | [matrix](results/2026-10-14-meta-muse-spark-1-3/matrix.md) |
+
+WebMCP used 52-94% fewer tokens than Playwright MCP and 69-97% fewer than DOM.
+
 For the complete restart, implementation, and measurement procedure, see [BENCHMARK_RUNBOOK.md](BENCHMARK_RUNBOOK.md).
 
 ## Run the Codex token benchmark
@@ -53,7 +66,7 @@ bun scripts/run-experiment.js playwright-mcp T1
 bun scripts/run-experiment.js visual T1
 ```
 
-Use a fresh output directory for a complete T1-T5 matrix. The public Nemotron matrix is preserved at [results/2026-10-30-nebius-nemotron-3-ultra-550b-a55b/matrix.md](results/2026-10-30-nebius-nemotron-3-ultra-550b-a55b/matrix.md). It contains provider-reported usage and both oracle verdicts; local UUID attempt folders and failed diagnostics remain ignored.
+Use a fresh output directory for a complete T1-T5 matrix. The public Nemotron matrix is preserved at [results/2026-10-30-nebius-nemotron-3-ultra-550b-a55b/matrix.md](results/2026-10-30-nebius-nemotron-3-ultra-550b-a55b/matrix.md). It contains provider-reported usage and both oracle verdicts for every cell.
 
 ## Local setup
 

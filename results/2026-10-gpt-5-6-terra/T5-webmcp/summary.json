@@ -1,0 +1,19 @@
+{
+  "model": "gpt-5.6-terra",
+  "mode": "webmcp",
+  "taskId": "T5",
+  "interface": "native_webmcp",
+  "inputTokens": 98433,
+  "cachedInputTokens": 86016,
+  "uncachedInputTokens": 12417,
+  "outputTokens": 673,
+  "reasoningTokens": 139,
+  "totalTokens": 99106,
+  "toolCallCount": 9,
+  "elapsedMs": 18365,
+  "oraclePassed": true,
+  "finalAnswerPassed": true,
+  "status": "completed",
+  "sourceRun": "2026-10-24T20-02-50.412Z-7e88e2d5",
+  "date": "2026-10-24"
+}

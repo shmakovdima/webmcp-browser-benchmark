@@ -1,0 +1,19 @@
+{
+  "model": "gpt-5.6-terra",
+  "mode": "playwright-mcp",
+  "taskId": "T5",
+  "interface": "native_playwright",
+  "inputTokens": 384865,
+  "cachedInputTokens": 355840,
+  "uncachedInputTokens": 29025,
+  "outputTokens": 1775,
+  "reasoningTokens": 326,
+  "totalTokens": 386640,
+  "toolCallCount": 24,
+  "elapsedMs": 110816,
+  "oraclePassed": true,
+  "finalAnswerPassed": true,
+  "status": "completed",
+  "sourceRun": "2026-10-24T20-02-50.412Z-7e88e2d5",
+  "date": "2026-10-24"
+}

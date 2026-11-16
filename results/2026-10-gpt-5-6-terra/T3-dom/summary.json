@@ -1,0 +1,19 @@
+{
+  "model": "gpt-5.6-terra",
+  "mode": "visual",
+  "taskId": "T3",
+  "interface": "rendered-dom-v1",
+  "inputTokens": 266084,
+  "cachedInputTokens": 242944,
+  "uncachedInputTokens": 23140,
+  "outputTokens": 956,
+  "reasoningTokens": 272,
+  "totalTokens": 267040,
+  "toolCallCount": 18,
+  "elapsedMs": 68221,
+  "oraclePassed": true,
+  "finalAnswerPassed": true,
+  "status": "completed",
+  "sourceRun": "2026-10-24T19-50-28.135Z-67a22329",
+  "date": "2026-10-24"
+}

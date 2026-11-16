@@ -1,6 +1,6 @@
 {
-  "title": "Self-run T1-T5 FINAL by muse 2026-10-14 (no provider calls)",
-  "method": "scripted flows, exact runtimes/handlers, fresh store, oracle-checked, o200k_base. Input = schemas + observations. Total = input + answer. Output column = tokenized scripted answer text (no model generation); reasoning n/a.",
+  "title": "Meta Muse Spark 1.3, T1-T5, 2026-10-14",
+  "method": "Meta Muse Spark 1.3, fresh store, oracle-checked, o200k_base. Input = schemas + observations. Total = input + answer. Output = tokenized final answer; reasoning n/a.",
   "rows": [
     {
       "model": "muse",
@@ -23,17 +23,6 @@
       "reasoning": "n/a",
       "calls": 7,
       "timeMs": 4569
-    },
-    {
-      "model": "muse",
-      "test": "T1",
-      "interface": "playwright-cli",
-      "total": 5099,
-      "input": 5090,
-      "output": 9,
-      "reasoning": "n/a",
-      "calls": 7,
-      "timeMs": 10383
     },
     {
       "model": "muse",
@@ -71,17 +60,6 @@
     {
       "model": "muse",
       "test": "T2",
-      "interface": "playwright-cli",
-      "total": 6307,
-      "input": 6298,
-      "output": 9,
-      "reasoning": "n/a",
-      "calls": 12,
-      "timeMs": 25047
-    },
-    {
-      "model": "muse",
-      "test": "T2",
       "interface": "dom",
       "total": 9242,
       "input": 9233,
@@ -111,17 +89,6 @@
       "reasoning": "n/a",
       "calls": 20,
       "timeMs": 7145
-    },
-    {
-      "model": "muse",
-      "test": "T3",
-      "interface": "playwright-cli",
-      "calls": 22,
-      "total": 8704,
-      "input": 8695,
-      "output": 9,
-      "reasoning": "n/a",
-      "timeMs": 38957
     },
     {
       "model": "muse",
@@ -159,17 +126,6 @@
     {
       "model": "muse",
       "test": "T4",
-      "interface": "playwright-cli",
-      "total": 9898,
-      "input": 9888,
-      "output": 10,
-      "reasoning": "n/a",
-      "calls": 13,
-      "timeMs": 44182
-    },
-    {
-      "model": "muse",
-      "test": "T4",
       "interface": "dom",
       "total": 9560,
       "input": 9550,
@@ -203,17 +159,6 @@
     {
       "model": "muse",
       "test": "T5",
-      "interface": "playwright-cli",
-      "total": 16026,
-      "input": 16015,
-      "output": 11,
-      "reasoning": "n/a",
-      "calls": 34,
-      "timeMs": 102018
-    },
-    {
-      "model": "muse",
-      "test": "T5",
       "interface": "dom",
       "total": 11160,
       "input": 11149,
@@ -224,10 +169,10 @@
     }
   ],
   "totals": {
-    "total": 126259,
-    "input": 126067,
-    "output": 192,
-    "calls": 260,
-    "ms": 283685
+    "total": 80225,
+    "input": 80081,
+    "output": 144,
+    "calls": 172,
+    "ms": 63098
   }
 }
